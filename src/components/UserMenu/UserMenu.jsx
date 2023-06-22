@@ -9,13 +9,25 @@
 // };
 
 import { NavLink } from 'react-router-dom';
-// import css from './AuthNav.module.css';
+import css from './UserMenu.module.css';
 
 export const UserMenu = () => {
   return (
-    <div>
-      <NavLink to="/register">Register</NavLink>
-      <NavLink to="/login">Log In</NavLink>
+    <div className={css.wrapper}>
+      <p className={css.username}>Welcome, </p>
+      <button
+        type="button"
+        onClick={() => {
+          console.log('first');
+        }}
+      >
+        Logout
+      </button>
     </div>
+
+    // <div className={css.wrapper}>
+    //   <NavLink to="/register">Register</NavLink>
+    //   <NavLink to="/login">Log In</NavLink>
+    // </div>
   );
 };

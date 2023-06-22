@@ -1,7 +1,7 @@
-import ContactForm from 'components/ContactForm/ContactForm';
-import ContactList from 'components/ContactList/ContactList';
-import Filter from 'components/Filter/Filter';
-import css from './App.module.css';
+import ContactForm from './ContactForm/ContactForm';
+import ContactList from './ContactList/ContactList';
+import Filter from './Filter/Filter';
+import css from '../components/App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from '../redux/operation';
@@ -12,7 +12,7 @@ import {
   selectError,
 } from '../redux/selector';
 
-const Contacts = () => {
+export const Contacts = () => {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -20,6 +20,7 @@ const Contacts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('first');
     dispatch(fetchContacts());
   }, [dispatch]);
 
@@ -50,4 +51,4 @@ const Contacts = () => {
     </div>
   );
 };
-export default Contacts;
+// export default Contacts;
