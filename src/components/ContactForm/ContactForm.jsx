@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/operation';
-import { selectContacts } from '../../redux/selector';
+import { addContact } from '../../redux/contact-operation';
+import { selectContacts } from '../../redux/contact-selector';
 const ContactForm = () => {
   //store
 
@@ -11,7 +11,7 @@ const ContactForm = () => {
   const contacts = useSelector(selectContacts);
   //local state onchange form
   const [name, setName] = useState('');
-  const [phone, setNumber] = useState('');
+  const [number, setNumber] = useState('');
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -21,7 +21,7 @@ const ContactForm = () => {
         setName(value);
         break;
 
-      case 'phone':
+      case 'number':
         setNumber(value);
         break;
 
@@ -32,7 +32,7 @@ const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const dataForm = { name, phone };
+    const dataForm = { name, number };
 
     if (
       contacts.some(
@@ -42,10 +42,10 @@ const ContactForm = () => {
       return alert(`Contact with name "${name}" is already in contacts`);
     }
 
-    const existNumber = contacts.find(el => el.phone === phone);
+    const existNumber = contacts.find(el => el.number === number);
     if (existNumber) {
       return alert(
-        `Contact with number ${existNumber.phone} is already in  ${existNumber.name}`
+        `Contact with number ${existNumber.number} is already in  ${existNumber.name}`
       );
     }
 
@@ -80,12 +80,12 @@ const ContactForm = () => {
         <input
           className={css.input__data}
           type="tel"
-          name="phone"
+          name="number"
           // pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im"
           pattern="\+?[0-9\s\-\(\)]+"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          value={phone}
+          value={number}
           onChange={handleChange}
         />
       </label>

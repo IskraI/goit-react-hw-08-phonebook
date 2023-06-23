@@ -30,8 +30,6 @@ const Home = () => {
       <div style={styles.container}>
         <NavLink to="contacts">contacts all</NavLink>
       </div>
-
-      {/* <Navigation /> */}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import Contact from '../Contact/Contact';
 import { useSelector } from 'react-redux';
-import { selectContacts, selectFilter } from '../../redux/selector';
+import { selectContacts, selectFilter } from '../../redux/contact-selector';
 
 const getVisibleContacts = (contacts, filter) => {
   const normalizedFilter = filter.toLowerCase().trim();

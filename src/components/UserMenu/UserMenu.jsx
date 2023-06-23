@@ -8,20 +8,22 @@
 //   </div>;
 // };
 
-import { NavLink } from 'react-router-dom';
 import css from './UserMenu.module.css';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth-selector';
+import { logOut } from '../../redux/auth-operation';
+import { useDispatch } from 'react-redux';
 
 export const UserMenu = () => {
+  const user = useSelector(selectUser);
+  // const navigate = Navigate();
+
+  const dispatch = useDispatch();
   return (
     <div className={css.wrapper}>
-      <p className={css.username}>Welcome, </p>
-      <button
-        type="button"
-        onClick={() => {
-          console.log('first');
-        }}
-      >
-        Logout
+      <p className={css.username}>Welcome, {user.email} </p>
+      <button type="button" onClick={() => dispatch(logOut())}>
+        Log Out
       </button>
     </div>
 

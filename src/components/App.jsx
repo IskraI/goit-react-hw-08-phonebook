@@ -1,78 +1,61 @@
-// import ContactForm from 'components/ContactForm/ContactForm';
-// import ContactList from 'components/ContactList/ContactList';
-// import Navigation from 'components/Navigation/Navigation';
-// import Filter from 'components/Filter/Filter';
-// import css from './App.module.css';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-// import { fetchContacts } from '../redux/operation';
-
-// import {
-//   selectContacts,
-//   selectIsLoading,
-//   selectError,
-// } from '../redux/selector';
-
-// const App = () => {
-//   const contacts = useSelector(selectContacts);
-//   const isLoading = useSelector(selectIsLoading);
-//   const error = useSelector(selectError);
-
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(fetchContacts());
-//   }, [dispatch]);
-
-//   return (
-//     <div className={css.container}>
-//       <Navigation />
-
-//       <h1 className={css.title}>Phonebook</h1>
-//       <ContactForm />
-//       <h2 className={css.title__contacts}>Contacts</h2>
-//       {contacts.length !== 0 && (
-//         <>
-//           <Filter />
-//           <ContactList />
-//         </>
-//       )}
-
-//       {isLoading && !error && (
-//         <>
-//           <br />
-//           <b>Waiting...</b>
-//         </>
-//       )}
-
-//       {error && <p>{error}</p>}
-
-//       {!isLoading && !error && contacts.length === 0 && (
-//         <p>There is no contacts yet.</p>
-//       )}
-//     </div>
-//   );
-// };
-// export default App;
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
 import Layout from 'components/Layout/Layout';
+// import { useSelector } from 'react-redux';
+// import { selectIsRefreshing } from '../redux/auth-selector';
+import { refreshUser } from '../redux/auth-operation';
+import { PrivateRoute } from '../components/PrivateRoute/PrivateRoute';
+import PublicRoute from './PublicRoute/PublicRoute';
 
-const Home = lazy(() => import('../pages/Home'));
-const Login = lazy(() => import('../pages/Login'));
-const Register = lazy(() => import('../pages/Register'));
+const HomePage = lazy(() => import('../pages/HomePage'));
+const LoginPage = lazy(() => import('../pages/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="contacts" element={<ContactsPage />} />
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
-      </Route>
-      <Route path="*" element={<Home />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute>
+                <ContactsPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="register"
+            element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+        </Route>
+        <Route path="*" element={<HomePage />} />
+      </Routes>
+
+      <ToastContainer autoClose={2000} />
+    </>
   );
 };

@@ -1,8 +1,9 @@
 import { RegisterForm } from '../components/RegisterForm/RegisterForm';
+
 export default function Register() {
   return (
     <div>
-      <h2>Registration</h2>
+      <h2>SignUp</h2>
       <RegisterForm />
     </div>
   );
