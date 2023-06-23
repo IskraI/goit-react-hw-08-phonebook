@@ -1,14 +1,14 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth-operation';
-import css from './RegisterForm.module.css';
-import { useState } from 'react';
+// import css from './RegisterForm.module.css';
+// import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -17,27 +17,27 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 export const RegisterForm = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
-  const handleChange = ({ target: { value, name } }) => {
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
+  // const handleChange = ({ target: { value, name } }) => {
+  //   switch (name) {
+  //     case 'name':
+  //       setName(value);
+  //       break;
 
-      case 'email':
-        setEmail(value);
-        break;
-      case 'password':
-        setPassword(value);
-        break;
-      default:
-        return;
-    }
-  };
+  //     case 'email':
+  //       setEmail(value);
+  //       break;
+  //     case 'password':
+  //       setPassword(value);
+  //       break;
+  //     default:
+  //       return;
+  //   }
+  // };
 
   const handleSubmit = e => {
     e.preventDefault();

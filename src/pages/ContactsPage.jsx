@@ -4,7 +4,7 @@ import ContactList from '../components/ContactList/ContactList';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 import {
   selectIsLoading,
