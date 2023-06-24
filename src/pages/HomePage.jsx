@@ -4,6 +4,11 @@ import styled from 'styled-components';
 // import Loader from '../components/Loader/Loader';
 // import Navigation from '../components/Navigation/Navigation';
 import { NavLink } from 'react-router-dom';
+
+// import { selectIsLoading } from 'redux/contact-selector';
+// import { selectIsLoading } from 'redux/auth-selector';
+// import { Loader } from '../components/Loader/Loader';
+// import { useSelector } from 'react-redux';
 const styles = {
   container: {
     minHeight: 'calc(100vh)',
@@ -37,8 +42,12 @@ const StyledLink = styled(NavLink)`
 `;
 
 const Home = () => {
+  // const isLoading = useSelector(selectIsLoading);
+  // const isLoadingAuth = useSelector(selectIsLoading);
   return (
     <div>
+      {/* {isLoading && <Loader />} */}
+      {/* {isLoadingAuth && <Loader />} */}
       <h1 style={styles.title}>
         Phonebook manager welcome page{' '}
         <span role="img" aria-label="Greeting icon">

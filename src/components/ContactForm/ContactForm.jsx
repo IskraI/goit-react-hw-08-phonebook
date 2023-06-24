@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contact-operation';
-import { selectContacts } from '../../redux/contact-selector';
+import { selectContacts, selectIsLoading } from '../../redux/contact-selector';
+import { CenteredLoader } from 'components/Loader/Loader';
 const ContactForm = () => {
   //store
 
@@ -12,6 +13,7 @@ const ContactForm = () => {
   //local state onchange form
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const isLoading = useSelector(selectIsLoading);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -91,7 +93,7 @@ const ContactForm = () => {
       </label>
 
       <button className={css.add__button} type="submit">
-        Add contact
+        {isLoading ? <CenteredLoader /> : `Add contact`}
       </button>
     </form>
   );

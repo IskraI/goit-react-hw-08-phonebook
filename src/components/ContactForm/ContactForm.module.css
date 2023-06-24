@@ -45,6 +45,8 @@
 
 .add__button {
   display: block;
+  width: 154px;
+  height: 34px;
   font-size: 20px;
   margin-top: 16px;
   margin-left: auto;

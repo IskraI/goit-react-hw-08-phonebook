@@ -1,6 +1,7 @@
 import ContactForm from '../components/ContactForm/ContactForm';
 import Filter from '../components/Filter/Filter';
 import ContactList from '../components/ContactList/ContactList';
+import { CenteredLoader } from '../components/Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import css from './ContactPage.module.css';
@@ -44,12 +45,7 @@ export default function ContactsPage() {
           contact.
         </p>
       )}
-      {isLoading && (
-        <>
-          <br />
-          <b>Waiting...</b>
-        </>
-      )}
+      {contacts.length === 0 && isLoading && <CenteredLoader />}
     </div>
   );
 }
