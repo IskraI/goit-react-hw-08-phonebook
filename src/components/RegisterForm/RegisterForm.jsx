@@ -1,14 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth-operation';
-// import css from './RegisterForm.module.css';
-// import { useState } from 'react';
 import { toast } from 'react-toastify';
-
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -57,6 +53,8 @@ export const RegisterForm = () => {
       })
       .catch(() => toast.error('Login error - wrong email or password.'));
   };
+
+  //component mui
   const defaultTheme = createTheme();
   const ButtonCustom = styled(Button)(({ theme }) => ({
     boxShadow: 'none',
@@ -83,9 +81,10 @@ export const RegisterForm = () => {
     },
     '&:focus': {
       boxShadow: 'none',
-      // boxShadow: '0 0 0 0.2rem rgba(205, 136, 208, 0.5)',
+   
     },
   }));
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid
@@ -99,20 +98,7 @@ export const RegisterForm = () => {
         <Grid
           item
           xs={false}
-          // sm={4}
-          // md={4}
-          // sx={{
-          //   backgroundImage:
-          //     'url(https://source.unsplash.com/random?wallpapers)',
-          //   backgroundRepeat: 'no-repeat',
-          //   backgroundColor: t =>
-          //     t.palette.mode === 'light'
-          //       ? t.palette.grey[50]
-          //       : t.palette.grey[900],
-          //   backgroundSize: 'cover',
-          //   backgroundPosition: 'center',
-          // }}
-        />
+                />
         <Grid
           item
           xs={12}

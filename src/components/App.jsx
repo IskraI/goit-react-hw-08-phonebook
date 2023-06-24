@@ -10,7 +10,6 @@ import { refreshUser } from '../redux/auth-operation';
 import { PrivateRoute } from '../components/PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import css from './App.module.css';
-// import { selectIsRefreshing } from 'redux/auth-selector';
 const HomePage = lazy(() => import('../pages/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
@@ -18,8 +17,7 @@ const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  // const isRefreshing = useSelector(selectIsRefreshing);
-  // console.log('isRefreshing', isRefreshing);
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -39,14 +37,7 @@ export const App = () => {
                 />
               }
             />
-            {/* <Route
-              path="contacts"
-              element={
-                <PrivateRoute>
-                  <ContactsPage />
-                </PrivateRoute>
-              }
-            /> */}
+
             <Route
               path="register"
               element={
@@ -67,7 +58,7 @@ export const App = () => {
           <Route path="*" element={<HomePage />} />
         </Routes>
         <ToastContainer
-          position="top-center"
+          // position="top-center"
           reverseOrder={false}
           autoClose={2000}
         />
