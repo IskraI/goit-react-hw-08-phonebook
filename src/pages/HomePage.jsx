@@ -46,7 +46,7 @@ const Home = () => {
         </span>
       </h1>
       <div style={styles.container}>
-        <StyledLink to="contacts">contacts</StyledLink>
+        <StyledLink to="/contacts">contacts</StyledLink>
       </div>
     </div>
   );

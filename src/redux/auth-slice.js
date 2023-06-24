@@ -55,6 +55,12 @@ const handleLogInFulfilled = (state, { payload }) => {
   state.isLoggedIn = true;
 };
 
+const isPendingAction = action =>
+  action.type.endsWith('/pending') && action.type.includes('auth');
+
+const isRejectedAction = action =>
+  action.type.endsWith('/rejected') && action.type.includes('auth');
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -63,37 +69,11 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, handleFulfilled)
       .addCase(logOut.fulfilled, handleLogOutFulfilled)
       .addCase(logIn.fulfilled, handleLogInFulfilled)
-      .addCase(refreshUser.pending, handleRefreshPending)
       .addCase(refreshUser.fulfilled, handleRefreshFulfilled)
+      .addCase(refreshUser.pending, handleRefreshPending)
       .addCase(refreshUser.rejected, handleRefreshRejected)
-      .addMatcher(
-        ({ type }) => type.endsWith('/pending') && type.includes('auth'),
-        handlePending
-      )
-      .addMatcher(
-        ({ type }) => type.endsWith('/rejected') && type.includes('auth'),
-        handleRejected
-      );
-
-    // [register.fulfilled](state, action) {
-    //   state.user = action.payload.user;
-    //   state.token = action.payload.token;
-    //   state.isLoggedIn = true;
-    // },
-    // [logIn.fulfilled](state, action) {
-    //   state.user = action.payload.user;
-    //   state.token = action.payload.token;
-    //   state.isLoggedIn = true;
-    // },
-    // [logOut.fulfilled](state, action) {
-    //   state.user = { name: null, email: null };
-    //   state.token = null;
-    //   state.isLoggedIn = false;
-    // },
-    // [authOperations.fetchCurrentUser.fulfilled](state, action) {
-    //   state.user = action.payload;
-    //   state.isLoggedIn = true;
-    // },
+      .addMatcher(isPendingAction, handlePending)
+      .addMatcher(isRejectedAction, handleRejected);
   },
 });
 
