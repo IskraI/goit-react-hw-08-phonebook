@@ -1,14 +1,14 @@
-// import styled from 'styled-components';
-// import { NavLink } from 'react-router-dom';
-// // import styled from '';
+.container {
+  display: flex;
+  flex-direction: column;
 
-// export const Container = styled.div`
-//   max-width: 960px;
-//   margin: 0 auto;
-//   padding: 0 16px;
-// `;
+  min-width: 480px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 12px;
+}
 
-// export const Header = styled.header`
+/* // export const Header = styled.header`
 //   display: flex;
 //   align-items: center;
 //   justify-content: space-between;
@@ -33,4 +33,4 @@
 //     color: white;
 //     background-color: orangered;
 //   }
-// `;
+// `; */

@@ -9,7 +9,7 @@ import Layout from 'components/Layout/Layout';
 import { refreshUser } from '../redux/auth-operation';
 import { PrivateRoute } from '../components/PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
-
+import css from './App.module.css';
 const HomePage = lazy(() => import('../pages/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
@@ -24,38 +24,43 @@ export const App = () => {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route
-            path="contacts"
-            element={
-              <PrivateRoute>
-                <ContactsPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="register"
-            element={
-              <PublicRoute>
-                <RegisterPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
-        </Route>
-        <Route path="*" element={<HomePage />} />
-      </Routes>
-
-      <ToastContainer autoClose={2000} />
+      <main className={css.main}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path="contacts"
+              element={
+                <PrivateRoute>
+                  <ContactsPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="register"
+              element={
+                <PublicRoute>
+                  <RegisterPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+          </Route>
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+        <ToastContainer
+          position="top-center"
+          reverseOrder={false}
+          autoClose={2000}
+        />
+      </main>
     </>
   );
 };

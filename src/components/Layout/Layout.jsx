@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-// import { Container } from './Layout.styled';
+import css from './Layout.module.css';
 
 import { AppBar } from '../AppBar/AppBar';
 // import { useDispatch, useSelector } from 'react-redux';
@@ -19,14 +19,17 @@ const Layout = () => {
   //   }
   // }, [token, user, dispatch]);
   return (
-    <main>
-      <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 16px' }}>
+
+      <div
+        className={css.container}
+        // style={{ maxWidth: 960, margin: '0 auto', padding: '0 16px' }}
+      >
         <AppBar />
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
       </div>
-    </main>
+
   );
 };
 export default Layout;

@@ -15,7 +15,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { styled } from '@mui/material/styles';
 export const LoginForm = () => {
   // const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
@@ -39,14 +39,54 @@ export const LoginForm = () => {
   };
   const defaultTheme = createTheme();
 
+  const ButtonCustom = styled(Button)(({ theme }) => ({
+    boxShadow: 'none',
+    textTransform: 'none',
+    fontSize: 20,
+    padding: '6px 12px',
+    border: '1px solid',
+    lineHeight: 1.5,
+    backgroundColor: '#ffffff',
+    borderColor: '#9a2f9d',
+    color: '#9a2f9d',
+    borderRadius: '16px',
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    '&:hover': {
+      backgroundColor: '#9a2f9d',
+      borderColor: '#9a2f9d',
+      color: '#ffffff',
+      boxShadow: '0 0 0 0.2rem rgba(205, 136, 208, 0.5)',
+    },
+    '&:active': {
+      boxShadow: 'none',
+      backgroundColor: '#a57fa7',
+      borderColor: '#a57fa7',
+    },
+    '&:focus': {
+      boxShadow: 'none',
+      // boxShadow: '0 0 0 0.2rem rgba(205, 136, 208, 0.5)',
+    },
+  }));
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid
         container
         component="main"
-        alignItems="center"
+        alignItems="top"
         justifyContent="center"
-        sx={{ height: '50vh' }}
+        sx={{ height: '100vh' }}
       >
         <CssBaseline />
         <Grid
@@ -66,7 +106,16 @@ export const LoginForm = () => {
           //   backgroundPosition: 'center',
           // }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          sx={{ height: '440px', borderRadius: '12px' }}
+          component={Paper}
+          elevation={6}
+          square
+        >
           <Box
             sx={{
               my: 8,
@@ -79,7 +128,7 @@ export const LoginForm = () => {
             <Avatar sx={{ m: 1, bgcolor: '#9a2f9d' }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5" sx={{ color: '#9a2f9d' }}>
               Log in
             </Typography>
             <Box
@@ -97,6 +146,7 @@ export const LoginForm = () => {
                 name="email"
                 autoComplete="off"
                 autoFocus
+                color="secondary"
               />
               <TextField
                 margin="normal"
@@ -107,16 +157,17 @@ export const LoginForm = () => {
                 type="password"
                 id="password"
                 autoComplete="off"
+                color="secondary"
               />
 
-              <Button
+              <ButtonCustom
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
                 Log In
-              </Button>
+              </ButtonCustom>
             </Box>
           </Box>
         </Grid>

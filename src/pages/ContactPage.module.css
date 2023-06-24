@@ -1,3 +1,17 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 100vh;
+}
+.title {
+  margin: 8px auto;
+  color: #9f0697;
+}
+.titleSecondary {
+  margin: 12px auto;
+  color: #40053d;
+}
 /* export const ContactsPageWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -5,7 +19,8 @@
   height: 100%;
 `;
 
-export const Section = styled.div`
+
+
   display: flex;
   flex-direction: column;
   gap: 4px;

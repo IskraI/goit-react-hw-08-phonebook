@@ -3,6 +3,7 @@ import Filter from '../components/Filter/Filter';
 import ContactList from '../components/ContactList/ContactList';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import css from './ContactPage.module.css';
 
 // import { toast } from 'react-toastify';
 
@@ -25,10 +26,10 @@ export default function ContactsPage() {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Phonebook</h1>
+    <div className={css.section}>
+      <h1 className={css.title}>Phonebook</h1>
       <ContactForm />
-      <h2>Contacts</h2>
+      <h2 className={css.titleSecondary}>Contacts</h2>
 
       {contacts.length !== 0 && (
         <>
